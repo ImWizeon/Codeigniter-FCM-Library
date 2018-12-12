@@ -20,13 +20,13 @@ class Users extends CI_Controller
 
         /**
          * payload is userd to send additional data in the notification
-         * This is purticularly useful for invoking functions in background 
+         * This is purticularly useful for invoking functions in background
          * -----------------------------------------------------------------
          * set payload as null if no custom data is passing in the notification
          */
         $payload = array('notification' => '');
         $this->fcm->setPayload($payload);
-        
+
         /**
          * Send images in the notification
          */
@@ -38,11 +38,7 @@ class Users extends CI_Controller
         $json = $this->fcm->getPush();
 
         $p = $this->fcm->send($token, $json);
-        // print_r($p);
-        if ($p) {
-            $result = "success";
-        } else {
-            $result = "Fail : " . $p;
-        }
+
+        print_r($p);
     }
 }
