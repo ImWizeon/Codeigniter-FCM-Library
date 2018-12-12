@@ -14,7 +14,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | The secret key for Firebase API
 |
  */
-$config['key'] = 'AAAAaFWWUSI:APA91bEgnBio-mJsDdpPfYvBJFGWNddMGgZE5DS9hWCu7ENNaBx-HKWpTGxLPVVrk2XDU318KOwleJyqBlA7laTP3QCSEEH3JsbTgaqf_XP8QybuUBAEJhHgF7qnypwyiPuAswohtEgi';
+$config['key'] = 'YOUR-FCM-SERVER-KEY';
 
 /*
 |--------------------------------------------------------------------------
