@@ -3,6 +3,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Users extends CI_Controller
 {
+    /**
+     * Send to a single device
+     */
     public function sendNotification()
     {
         $token = 'Registratin_id'; // push token
@@ -40,5 +43,32 @@ class Users extends CI_Controller
         $p = $this->fcm->send($token, $json);
 
         print_r($p);
+    }
+
+    /**
+     * Send to multiple devices
+     */
+    public function sendToMultiple()
+    {
+        $token = array('Registratin_id1', 'Registratin_id2'); // array of push tokens
+        $message = "Test notification message";
+
+        $this->load->library('fcm');
+        $this->fcm->setTitle('Test FCM Notification');
+        $this->fcm->setMessage($message);
+        $this->fcm->setIsBackground(false);
+        // set payload as null
+        $payload = array('notification' => '');
+        $this->fcm->setPayload($payload);
+        $this->fcm->setImage('https://firebase.google.com/_static/9f55fd91be/images/firebase/lockup.png');
+        $json = $this->fcm->getPush();
+
+        /** 
+         * Send to multiple
+         * 
+         * @param array  $token     array of firebase registration ids (push tokens)
+         * @param array  $json      return data from getPush() method
+         */
+        $result = $this->fcm->sendMultiple($token, $json);
     }
 }
